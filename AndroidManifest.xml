@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.christopherpick.huffingtonpost"
+    android:versionCode="1"
+    android:versionName="1.0"
+    android:installLocation="auto">
+
+    <uses-sdk 
+        android:minSdkVersion="4"
+        android:targetSdkVersion="15" />
+    
+	<supports-screens 
+		 android:smallScreens="true" 
+		 android:normalScreens="true" 
+		 android:largeScreens="true" 
+		 android:anyDensity="true"
+		 android:resizeable="true" android:xlargeScreens="true"/> 
+	<uses-permission android:name="android.permission.INTERNET"/>
+    
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" android:hardwareAccelerated="true">
+        <activity
+            android:name=".HuffingtonPostActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <provider android:name="com.christopherpick.huffingtonpost.provider.HuffingtonPostProvider" 
+            android:authorities="com.christopherpick.huffingtonpost" />
+        
+		<service android:name="com.christopherpick.huffingtonpost.service.HuffingtonPostService" 
+		    	android:exported="false">
+            <intent-filter>
+                <action android:name="com.christopherpick.huffingtonpost.action.clear"/>
+				<action android:name="com.christopherpick.huffingtonpost.action.clearall"/>
+                <action android:name="com.christopherpick.huffingtonpost.action.get"/>
+                
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
